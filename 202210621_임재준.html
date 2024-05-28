@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
     <title>202210621 임재준</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: beige;
+            font-size: 16px; /* Default font size */
+        }
+        .top {
+            background-color: chocolate;
+            text-align: center;
+            margin: 0;
+            padding: 30px 0;
         }
         .navbar {
             background-color: darkolivegreen;
@@ -40,6 +47,25 @@
         .radio.active {
             display: block;
         }
+
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            body {
+                font-size: 15px; /* Smaller font size for mobile */
+            }
+            .top {
+                font-size: 24px; /* Larger header text */
+                padding: 20px 0; /* Larger padding for header */
+            }
+            .navbar a {
+                font-size: 13px; /* Larger navbar text */
+                padding: 15px; /* Larger padding for navbar links */
+            }
+            img {
+                width: calc(100% - 20px); /* Full width minus padding */
+                padding: 0 10px; /* Padding on the left and right */
+            }
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
@@ -51,7 +77,6 @@
                 $('#' + sectionId).addClass('active');
             });
 
-            // 페이지 로드 시 첫 번째 섹션을 표시
             $('.section').first().addClass('active');
 
             $('input[name="school"]').on('change', function() {
@@ -60,33 +85,13 @@
                 $('#' + subSectionId).addClass('active');
             });
 
-            // 첫 번째 라디오 버튼을 선택 상태로 설정
-            $('input[name="school"]').first().prop('checked', true).trigger('change');
-
-            // 뷰포트 크기에 따라 글자 크기를 조정하는 함수
-            function adjustFontSize() {
-                var viewportWidth = $(window).width();
-                var fontSize;
-                if (viewportWidth < 600) { // 작은 화면 (모바일)
-                    fontSize = '12px';
-                } else if (viewportWidth < 900) { // 중간 화면 (태블릿)
-                    fontSize = '14px';
-                } else { // 큰 화면 (데스크탑)
-                    fontSize = '16px';
-                }
-                $('body').css('font-size', fontSize);
-            }
-
-            // 페이지 로드 시와 윈도우 리사이즈 시 글자 크기 조정
-            adjustFontSize();
-            $(window).resize(function() {
-                adjustFontSize();
-            });
         });
     </script>
 </head>
 <body>
-
+<header>
+    <h1 class="top">202210621 임재준</h1>
+</header>
 <div class="navbar">
     <a href="#main">About Me</a>
     <a href="#hobby">Hobby</a>
@@ -96,7 +101,7 @@
 <div class="home">
     <div id="main" class="section active">
         <h1>About Me</h1>
-        <img src="image\passport.jpg" alt="여권사진" width="200px">
+        <img src="image/passport.jpg" alt="여권사진" width="200px">
         <p>안녕하세요 저는 2002년 4월 15일에 쌍둥이 동생과 함께 태어났습니다. 서울 양천구 목3동에서 평생을 살아왔습니다. 아래에서 저의 학창시절을 보여드리겠습니다.</p>
         <form>
             <label><input type="radio" name="school" value="elementary"> 어린이</label>
@@ -107,11 +112,11 @@
         <div id="elementary" class="radio">
             <h2>어린이</h2>
             <img src="image/child.jpg" alt="등촌" width="500">
-            <p>2009년 3월 입학하여 2015년 2월에 졸업하였습니다. 현재까지도 좋아하는 농구와 기타 연주를 이때 시작하였고 좋은 친구들을 많이 만나 지금도 해외여행을 같이 갈 정도로 잘 지내고 있습니다</p>
+            <p>등촌유치원과 등촌초등학교를 나왔으며 현재까지도 좋아하는 농구와 기타 연주를 이때 시작하였고 좋은 친구들을 많이 만나 지금도 해외여행을 같이 갈 정도로 잘 지내고 있습니다</p>
         </div>
         <div id="middle" class="radio">
             <h2>양동중학교</h2>
-            <img src="image\middle.png" alt="양동" width="500">
+            <img src="image/middle.png" alt="양동" width="500">
             <p>2015년도 3월에 입학하였고 2018년도 2월에 졸업하였습니다. 밝은 친구들을 만나 저의 인격생성에 좋은 영향을 끼친 시절이었습니다.</p>
         </div>
         <div id="high" class="radio">
@@ -128,6 +133,7 @@
     <div id="hobby" class="section">
         <h1>Hobby</h1>
         <p>저는 스포츠와 음악을 좋아합니다. 스포츠는 농구와 당구를 좋아하고 기타 치는것과 음악 감상을 즐깁니다. 좋아하는 음악은 다음 장에 자세하게 말씀드리겠습니다. 밑에 사진을 저와 10년 넘는 세월을 함께한 제 기타입니다. 오래된 기타이지만 무엇과도 견줄 수 없는 저만의 기타입니다.</p>
+        <img src="image/guitar.jpg" alt="guitar" width="500px">
     </div>
     <div id="music" class="section">
         <h1>Playlist</h1>
@@ -156,4 +162,4 @@
 </div>
 
 </body>
-</html
+</html>
